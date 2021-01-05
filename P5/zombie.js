@@ -1,15 +1,16 @@
 class Zombie {
     constructor() {
-        this.r = 100;
+        this.r = 75;
         this.x = width;
         this.y = height - this.r;
     }
 
     move() {
-        this.x -= 3;
+        this.x -= 16;
     }
 
     show() {
         rect(this.x, this.y, this.r, this.r);
+        //image(zImg...)
     }
 }

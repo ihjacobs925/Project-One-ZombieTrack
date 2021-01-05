@@ -1,6 +1,6 @@
 class Athlete {
     constructor() {
-        this.r = 50;
+        this.r = 100;
         this.x = 50;
         this.y = height - this.r;
         this.vy = 0;
@@ -13,6 +13,10 @@ class Athlete {
         }
     }
 
+    hits(zombie) {
+        return collideRectRect(this.x, this.y, this.r, this.r, zombie.x, zombie.y, zombie.r, zombie.r);
+    }
+
     move() {
         this.y += this.vy;
         this.vy += this.gravity;
@@ -21,5 +25,6 @@ class Athlete {
 
     show() {
         rect(this.x, this.y, this.r, this.r);
+        //image(aImg, ...)
     }
 }

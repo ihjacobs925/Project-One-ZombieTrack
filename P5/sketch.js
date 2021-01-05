@@ -1,5 +1,14 @@
 let athlete;
+//let aImg;
+//let zImg;
+//let bImg;
 let zombies = [];
+
+// function preload() {
+//   aImg = loadImage('athlete.png');
+//   zImg = loadImage('zombie.png');
+//   bImg = loadImage('background.png');
+// }
 
 
 function setup() {
@@ -14,17 +23,20 @@ function keyPressed() {
 }
 
 function draw() {
-  if (random(1) < .01) {
+  if (random(1) < .005) {
     zombies.push(new Zombie());
   }
 
-
-  background(220);
-  athlete.show();
-  athlete.move();
-
+  background(220); //bImg
   for (let z of zombies) {
     z.move();
     z.show();
+    if (athlete.hits(z)) {
+      console.log('You have been eaten! Game Over!');
+      noLoop();
+   }
   }
+
+  athlete.show();
+  athlete.move();
 }
