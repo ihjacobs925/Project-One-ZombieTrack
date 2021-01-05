@@ -1,30 +1,30 @@
-let unicorn;
-let trains = [];
+let athlete;
+let zombies = [];
 
 
 function setup() {
   createCanvas(800, 450);
-  unicorn = new Unicorn();
+  athlete = new Athlete();
 }
 
 function keyPressed() {
   if (key == ' ') {
-    unicorn.jump();
+    athlete.jump();
   }
 }
 
 function draw() {
   if (random(1) < .01) {
-    trains.push(new Train());
+    zombies.push(new Zombie());
   }
 
 
   background(220);
-  unicorn.show();
-  unicorn.move();
+  athlete.show();
+  athlete.move();
 
-  for (let t of trains) {
-    t.move();
-    t.show();
+  for (let z of zombies) {
+    z.move();
+    z.show();
   }
 }

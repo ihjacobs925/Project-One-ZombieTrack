@@ -1,4 +1,4 @@
-class Train {
+class Zombie {
     constructor() {
         this.r = 100;
         this.x = width;

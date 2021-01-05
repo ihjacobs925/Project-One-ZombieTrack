@@ -1,4 +1,4 @@
-class Unicorn {
+class Athlete {
     constructor() {
         this.r = 50;
         this.x = 50;
