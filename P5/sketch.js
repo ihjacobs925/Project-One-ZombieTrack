@@ -1,14 +1,19 @@
+let PLAY = 1;
+let END = 0;
+let gameState = PLAY;
+let score = 0;
+let current_score;
 let athlete;
 //let aImg;
-//let zImg;
-//let bImg;
+let zImg;
+let bImg;
 let zombies = [];
 
-// function preload() {
-//   aImg = loadImage('athlete.png');
-//   zImg = loadImage('zombie.png');
-//   bImg = loadImage('background.png');
-// }
+function preload() {
+   aImg = loadImage('athlete.png');
+   zImg = loadImage('zombie.png');
+   bImg = loadImage('track.jpg');
+}
 
 
 function setup() {
@@ -27,7 +32,7 @@ function draw() {
     zombies.push(new Zombie());
   }
 
-  background(220); //bImg
+  background(bImg); //bImg
   for (let z of zombies) {
     z.move();
     z.show();
