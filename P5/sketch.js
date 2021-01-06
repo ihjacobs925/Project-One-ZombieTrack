@@ -4,7 +4,7 @@ let gameState = PLAY;
 let score = 0;
 let current_score;
 let athlete;
-//let aImg;
+let aImg;
 let zImg;
 let bImg;
 let zombies = [];
@@ -37,7 +37,7 @@ function draw() {
     z.move();
     z.show();
     if (athlete.hits(z)) {
-      console.log('You have been eaten! Game Over!');
+      alert('You have been eaten! Game Over!');
       noLoop();
    }
   }
