@@ -1,13 +1,13 @@
-let PLAY = 1;
-let END = 0;
-let gameState = PLAY;
-let score = 0;
-let current_score;
 let athlete;
 let aImg;
 let zImg;
 let bImg;
 let zombies = [];
+let gameScore = 0;
+let gameIntervalId;
+
+const resetBtn = document.getElementById('reset');
+const scoreDiv = document.getElementById('gameScore');
 
 function preload() {
    aImg = loadImage('athlete.png');
@@ -16,10 +16,26 @@ function preload() {
 }
 
 
-function setup() {
-  createCanvas(800, 450);
-  athlete = new Athlete();
+function updateScore () {
+  gameScore++;
+  scoreDiv.innerText = 'Score: ' + gameScore; 
 }
+
+async function setup() {
+  noCanvas();
+  zombies = [];
+  let canvas = await createCanvas(800, 450);
+  gameScore = 0;
+  console.log('show score');
+  athlete = new Athlete();
+  gameIntervalId = setInterval(updateScore, 500);
+}
+
+resetBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  setup();
+})
+
 
 function keyPressed() {
   if (key == ' ') {
@@ -37,11 +53,14 @@ function draw() {
     z.move();
     z.show();
     if (athlete.hits(z)) {
-      alert('You have been eaten! Game Over!');
+      alert(`You have been eaten! Game Over! High Score: ${gameScore}`);
+      clearInterval(gameIntervalId);
       noLoop();
    }
   }
 
   athlete.show();
   athlete.move();
+
 }
+
